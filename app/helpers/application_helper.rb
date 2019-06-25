@@ -96,7 +96,7 @@ module ApplicationHelper
   end
 
   def get_operator_label_from_id(id)
-    Operator.find(id).try(:label)
+    RemoteOperator.find(id).try(:label)
   rescue
     'Unknown'
   end

@@ -5,15 +5,15 @@ es:
       operator_shifts:
         finish: "Final"
         start: "Comienzo"
-      outflow:
+      movement:
         amount: "Cantidad"
-        bill: "Factura"
+        bill: "Factura/Comprobante"
         bought_at: "Fecha"
         charged_by: "Cargado por"
         comment: "Comentario"
         file: "Archivo"
         finish_shift: "Turnos Hasta"
-        kind: "Tipo de salida"
+        kind: "Tipo de movimiento"
         operator_id: "Operador"
         provider_id: "Proveedor"
         start_shift: "Turnos Desde"
@@ -21,6 +21,9 @@ es:
       setting:
         title: "Título"
         value: "Valor"
+      transaction:
+        debit: 'Débito'
+        credit: 'Crédito'
       user:
         email: "Correo"
         lastname: "Apellido"
@@ -33,15 +36,27 @@ es:
           other: "Perfiles"
     errors:
       models:
+        movement:
+          attributes:
+            base:
+              at_least_one_account_needed: "Se necesita al menos una cuenta de origen o destino"
+              provider_needed_for_bill: 'Se necesita un proveedor para cargar factura'
+              operator_needed: 'Se necesita un operario'
         provider:
           attributes:
             name:
               detailed_taken: "de proveedor ya creado, por favor busquelo."
     models:
       operator_shifts: "Turno"
-      outflow:
-        one: "Salida"
-        other: "Salidas"
+      box:
+        one: "Caja/Banco"
+        other: "Cajas/Bancos"
+      movement:
+        one: "Movimiento"
+        other: "Movimientos"
+      operator:
+        one: "Operador"
+        other: "Operadores"
       provider:
         one: "Proveedor"
         other: "Proveedores"
@@ -69,6 +84,7 @@ es:
     loading: "Cargando..."
     new: "Nuevo"
     "no": "No"
+    remove: 'Quitar'
     search: "Buscar"
     show: "Ver"
     "yes": "Si"
@@ -77,9 +93,11 @@ es:
       logout: "Salir de la aplicación"
     incentives: "Incentivos"
     monthly_info: "Mensual"
+    boxes: "Cajas/Bancos"
     operators: "Operadores"
-    outflows: "Egresos"
+    movements: "Movimientos"
     providers: "Proovedores"
+    accounts: 'Cuentas'
     reports: "Reportes"
     retroactive: "Retroactivos"
     settings: "Configuración"
@@ -91,6 +109,8 @@ es:
     day: "Día"
     quantity: "Cantidad"
   view:
+    versions:
+      have_changes: "Tiene modificaciones"
     generic:
       empty_index:
         html: "No hay ningún elemento por el momento"
@@ -98,6 +118,11 @@ es:
         title:
           html: "La búsqueda de <span class=\"label label-inverse\">%{search}</span> no obtuvo ningún resultado."
     operators:
+      without_transactions: "Sin transacciones"
+      without_transaction: "Sin transacciones"
+      transactions: "Cuenta corriente"
+      re_import: "Actualizar operarios"
+      imported_count: "Operarios importados: %{count}"
       administrator: "Encargado"
       as_admin: "Encargado?"
       charge: "Cargo"
@@ -117,16 +142,17 @@ es:
       start: "Comienzo"
       without_movements: "No se ha registrado ningún movimiento hasta el momento"
       without_upfronts: "Sin adelantos."
-    outflows:
-      correctly_created: "Egreso agregado correctamente."
-      correctly_updated: "Egreso actualizado correctamente."
+    movements:
+      from_to_account: "Entre cuentas"
+      correctly_created: "Movimiento agregado correctamente."
+      correctly_updated: "Movimiento actualizado correctamente."
       credits_canceled: "Créditos cancelados"
       current_credit: "Saldo"
-      edit_title: "Modificar egreso"
+      edit_title: "Modificar movimiento"
       generated_credit: "Crédito generado"
       index:
-        html: 'No se ha creado ningún egreso hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo egreso</span>'
-      index_title: "Listado de egresos"
+        html: 'No se ha creado ningún movimiento hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo movimiento</span>'
+      index_title: "Listado de movimientos"
       kind:
         cca_gral: "General CCA"
         cetem_gral: "General CETEM"
@@ -136,20 +162,22 @@ es:
         paper: "Papel"
         payoff: "Pago"
         refunded: "Arreglado"
-        to_favor: "A Favor"
+        transfer: 'Transferencia'
+        to_favor: "A Favor (Operario)"
+        to_favor_r: "A favor (arreglado)"
         toner: "Tóner"
         tops_rings: "Tapas y anillos"
-        upfront: "Adelanto"
+        upfront: "Adelanto (Operario)"
+        upfront_r: "Adelanto (Arreglado)"
       monthly_by_year: "Facturas Mensuales - %{year}"
       movement_kind: "Tipo de movimiento"
-      new_title: "Nuevo egreso"
+      new_title: "Nuevo movimiento"
       operators: "Operadores"
       pay_detail_between: "Detalle de pagos entre [%{range}]"
       reajust_of: "Reajuste de <a href=\"%{path}\">%{id}</a>"
-      remove_provider: "Quitar Proveedor"
       reports:
         amount: "Monto"
-        bill: "Nº de factura"
+        bill: "Nº de factura/Comprobante"
         date: "Fecha"
         details: "Detalles"
         provider: "Proveedor"
@@ -174,10 +202,10 @@ es:
         title: "Turnos pendientes de pago"
         total_to_pay: "Total a pagar"
         wait_paying: "Pagando..."
-      show_title: "Detalle de egreso"
-      stale_object_error: "El egreso no pudo ser actualizado, intente nuevamente."
+      show_title: "Detalle de movimiento"
+      stale_object_error: "El movimiento no pudo ser actualizado, intente nuevamente."
       suspicious_shifts: "Turnos sospechosos con muchas horas"
-      update_outflow: "Actualizar egreso"
+      update_movement: "Actualizar movimiento"
       upfronts: "Adelantos"
       with_filter: "Filtrado por: %{filter}"
       with_incentive:

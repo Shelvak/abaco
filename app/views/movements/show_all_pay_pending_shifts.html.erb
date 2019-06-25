@@ -10,8 +10,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th><%= t('view.outflows.shifts.begin') %></th>
-          <th><%= t('view.outflows.shifts.finish') %></th>
+          <th><%= t('view.movements.shifts.begin') %></th>
+          <th><%= t('view.movements.shifts.finish') %></th>
           <th></th>
         </tr>
       </thead>
@@ -24,7 +24,7 @@
           <td><%= f.input :to, as: :date_picker, label: false, input_html: {
             value: interval[:to]
           } %></td>
-          <td><%= f.button :submit, t('view.outflows.shifts.search') %></td>
+          <td><%= f.button :submit, t('view.movements.shifts.search') %></td>
         </tr>
       </tbody>
     </table>
@@ -34,18 +34,18 @@
 <% if @operators_shifts && @operators_shifts.size > 0 %>
   <div class="readonly-data" id="shifts-data">
     <h2>
-      <%= t('view.outflows.shifts.shifts_for', operator: t('label.all')) %>
+      <%= t('view.movements.shifts.shifts_for', operator: t('label.all')) %>
     </h2>
     <table class="table table-striped">
       <thead>
         <tr>
           <th><%= t('view.operators.operator') %></th>
-          <th><%= t('view.outflows.shifts.count') %></th>
-          <th><%= t('view.outflows.shifts.hours') %></th>
-          <th><%= t('view.outflows.shifts.earnings') %></th>
-          <th><%= t('view.outflows.current_credit') %></th>
-          <th><%= t('view.outflows.shifts.total_to_pay') %></th>
-          <th><%= t('view.outflows.with_incentive.to_question') %></th>
+          <th><%= t('view.movements.shifts.count') %></th>
+          <th><%= t('view.movements.shifts.hours') %></th>
+          <th><%= t('view.movements.shifts.earnings') %></th>
+          <th><%= t('view.movements.current_credit') %></th>
+          <th><%= t('view.movements.shifts.total_to_pay') %></th>
+          <th><%= t('view.movements.with_incentive.to_question') %></th>
           <th><%= t('label.actions') %></th>
         </tr>
       </thead>
@@ -74,7 +74,7 @@
               <%= show_pay_shifts_button(o.operator.id, interval[:from], interval[:to], total_to_pay) %>
               <% if o.shifts.suspicious_shifts %>
                 <%= iconic_link '&#xe025;'.html_safe, operator_path(o.operator.id),
-                  'title' => t('view.outflows.suspicious_shifts'),
+                  'title' => t('view.movements.suspicious_shifts'),
                   target: '_blank' %>
               <% end %>
             </td>
@@ -86,6 +86,6 @@
 <% end %>
 
 <div class="form-actions">
-  <%= link_to t('view.outflows.index_title'),
-    outflows_path, class: 'btn btn-primary' %>
+  <%= link_to t('view.movements.index_title'),
+    movements_path, class: 'btn btn-primary' %>
 </div>
