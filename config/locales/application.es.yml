@@ -2,9 +2,8 @@
 es:
   activerecord:
     attributes:
-      operator_shifts:
-        finish: "Final"
-        start: "Comienzo"
+      box:
+        default_cashbox: "Caja por defecto para pagos"
       movement:
         amount: "Cantidad"
         bill: "Factura/Comprobante"
@@ -18,12 +17,15 @@ es:
         provider_id: "Proveedor"
         start_shift: "Turnos Desde"
         user_id: "Usuario"
+      operator_shifts:
+        finish: "Final"
+        start: "Comienzo"
       setting:
         title: "Título"
         value: "Valor"
       transaction:
-        debit: 'Débito'
-        credit: 'Crédito'
+        credit: "Crédito"
+        debit: "Débito"
       user:
         email: "Correo"
         lastname: "Apellido"
@@ -40,14 +42,13 @@ es:
           attributes:
             base:
               at_least_one_account_needed: "Se necesita al menos una cuenta de origen o destino"
-              provider_needed_for_bill: 'Se necesita un proveedor para cargar factura'
-              operator_needed: 'Se necesita un operario'
+              operator_needed: "Se necesita un operario"
+              provider_needed_for_bill: "Se necesita un proveedor para cargar factura"
         provider:
           attributes:
             name:
               detailed_taken: "de proveedor ya creado, por favor busquelo."
     models:
-      operator_shifts: "Turno"
       box:
         one: "Caja/Banco"
         other: "Cajas/Bancos"
@@ -57,6 +58,7 @@ es:
       operator:
         one: "Operador"
         other: "Operadores"
+      operator_shifts: "Turno"
       provider:
         one: "Proveedor"
         other: "Proveedores"
@@ -84,20 +86,20 @@ es:
     loading: "Cargando..."
     new: "Nuevo"
     "no": "No"
-    remove: 'Quitar'
+    remove: "Quitar"
     search: "Buscar"
     show: "Ver"
     "yes": "Si"
   menu:
+    accounts: "Cuentas"
     actions:
       logout: "Salir de la aplicación"
+    boxes: "Cajas/Bancos"
     incentives: "Incentivos"
     monthly_info: "Mensual"
-    boxes: "Cajas/Bancos"
-    operators: "Operadores"
     movements: "Movimientos"
+    operators: "Operadores"
     providers: "Proovedores"
-    accounts: 'Cuentas'
     reports: "Reportes"
     retroactive: "Retroactivos"
     settings: "Configuración"
@@ -109,46 +111,30 @@ es:
     day: "Día"
     quantity: "Cantidad"
   view:
-    versions:
-      have_changes: "Tiene modificaciones"
+    boxes:
+      correctly_created: "Caja agregado correctamente."
+      correctly_updated: "Caja actualizado correctamente."
+      edit_title: "Modificar caja"
+      empty_index:
+        html: 'No se ha creado ningún caja hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva caja</span>'
+      index_title: "Listado de cajas"
+      new: "Nueva caja"
+      new_title: "Nueva caja"
+      show_title: "Detalles de caja"
+      stale_object_error: "La caja no pudo ser actualizada, intente nuevamente."
     generic:
       empty_index:
         html: "No hay ningún elemento por el momento"
       empty_search:
         title:
           html: "La búsqueda de <span class=\"label label-inverse\">%{search}</span> no obtuvo ningún resultado."
-    operators:
-      without_transactions: "Sin transacciones"
-      without_transaction: "Sin transacciones"
-      transactions: "Cuenta corriente"
-      re_import: "Actualizar operarios"
-      imported_count: "Operarios importados: %{count}"
-      administrator: "Encargado"
-      as_admin: "Encargado?"
-      charge: "Cargo"
-      create_shift: "Crear Turno"
-      finish: "Final"
-      full_name: "Nombre y apellido"
-      index_title: "Listado de Operarios"
-      movement_kind: "Tipo Movimiento"
-      movements: "Movimientos"
-      operator: "Operador"
-      paid: "Pagado?"
-      shift_can_not_be_created: "No se pudo crear el turno, revise los campos"
-      shift_created: "Turno creado correctamente."
-      shift_duration: "Duración del turno"
-      shifts: "Turnos"
-      show_title: "Detalle de operario"
-      start: "Comienzo"
-      without_movements: "No se ha registrado ningún movimiento hasta el momento"
-      without_upfronts: "Sin adelantos."
     movements:
-      from_to_account: "Entre cuentas"
       correctly_created: "Movimiento agregado correctamente."
       correctly_updated: "Movimiento actualizado correctamente."
       credits_canceled: "Créditos cancelados"
       current_credit: "Saldo"
       edit_title: "Modificar movimiento"
+      from_to_account: "Entre cuentas"
       generated_credit: "Crédito generado"
       index:
         html: 'No se ha creado ningún movimiento hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo movimiento</span>'
@@ -162,11 +148,11 @@ es:
         paper: "Papel"
         payoff: "Pago"
         refunded: "Arreglado"
-        transfer: 'Transferencia'
         to_favor: "A Favor (Operario)"
         to_favor_r: "A favor (arreglado)"
         toner: "Tóner"
         tops_rings: "Tapas y anillos"
+        transfer: "Transferencia"
         upfront: "Adelanto (Operario)"
         upfront_r: "Adelanto (Arreglado)"
       monthly_by_year: "Facturas Mensuales - %{year}"
@@ -212,8 +198,33 @@ es:
         "false": "Sin incentivo"
         to_question: "Con incentivo?"
         "true": "Con incentivo"
+    operators:
+      administrator: "Encargado"
+      as_admin: "Encargado?"
+      charge: "Cargo"
+      create_shift: "Crear Turno"
+      finish: "Final"
+      full_name: "Nombre y apellido"
+      imported_count: "Operarios importados: %{count}"
+      index_title: "Listado de Operarios"
+      movement_kind: "Tipo Movimiento"
+      movements: "Movimientos"
+      operator: "Operador"
+      paid: "Pagado?"
+      re_import: "Actualizar operarios"
+      shift_can_not_be_created: "No se pudo crear el turno, revise los campos"
+      shift_created: "Turno creado correctamente."
+      shift_duration: "Duración del turno"
+      shifts: "Turnos"
+      show_title: "Detalle de operario"
+      start: "Comienzo"
+      transactions: "Cuenta corriente"
+      without_movements: "No se ha registrado ningún movimiento hasta el momento"
+      without_transaction: "Sin transacciones"
+      without_transactions: "Sin transacciones"
+      without_upfronts: "Sin adelantos."
     providers:
-      cannot_be_destroyed: "Proveedor '%{name}' no puede borrarse, tiene movimientos."
+      cannot_be_destroyed: "Proveedor \"%{name}\" no puede borrarse, tiene movimientos."
       correctly_created: "Proveedor agregado correctamente."
       correctly_destroyed: "Proveedor eliminado correctamente."
       correctly_updated: "Proveedor actualizado correctamente."
@@ -272,3 +283,5 @@ es:
       stale_object_error: "El usuario no pudo ser actualizado, intente nuevamente."
       update_password: "Actualizar contraseña"
       update_profile: "Actualizar datos"
+    versions:
+      have_changes: "Tiene modificaciones"

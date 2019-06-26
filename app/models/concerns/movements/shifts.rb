@@ -86,7 +86,7 @@ module Movements::Shifts
             amount:            options[:amount].to_f.abs,
             user_id:           options[:user_id],
             from_account_type: Box.name,
-            from_account_id:   Box.default_cashbox.id,
+            from_account_id:   Box.default_cashbox.first.id,
             to_account_type:   Operator.name,
             to_account_id:     operator_id,
             with_incentive:    options[:with_incentive],

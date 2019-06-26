@@ -1,11 +1,7 @@
 <% if @operators.empty? %>
   <%= render 'shared/empty_index' %>
 <% else %>
-
   <div class="readonly-data">
-    <div class="row-fluid">
-      <%= link_to t('view.operators.re_import'), import_operators_path, method: :patch, class: 'btn btn-primary pull-right' %>
-    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -27,4 +23,5 @@
 <% end %>
 
 <nav class="form-actions">
+  <%= link_to t('view.operators.re_import'), import_operators_path, method: :patch, class: 'btn btn-primary pull-right' %>
 </nav>

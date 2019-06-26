@@ -14,6 +14,10 @@ class Account < ActiveRecord::Base
   validates :name, uniqueness: { message: :detailed_taken }
   validates :name, presence: true
 
+  enum multi_use: {
+    default_cashbox: 'default_cashbox'
+  }
+
   has_many :transactions
 
   def to_s

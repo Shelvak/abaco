@@ -5,6 +5,7 @@ class OperatorsController < ApplicationController
   def index
     @remote_operators = RemoteOperator.get(:current_workers)
     @admin_operators = @remote_operators.map { |o| o['abaco_id'] if o['admin'] }.compact
+
     @operators = Operator.where(
       id: @remote_operators.map {|o| o['abaco_id'] }
     ).order(name: :asc)
@@ -30,9 +31,7 @@ class OperatorsController < ApplicationController
     @paginate_size = @shifts.size
 
     if can? :read, Movement
-      @movements = @operator.movements.order(bought_at: :desc).paginate(
-        page: params[:movements_page]
-      )
+      @movements = @operator.movements.order(bought_at: :desc).page(params[:movements_page])
     end
   end
 

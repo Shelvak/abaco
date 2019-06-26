@@ -75,6 +75,6 @@ class BoxesController < ApplicationController
   end
 
   def box_params
-    params.require(:box).permit(:name)
+    params.require(:box).permit(:name, :default_cashbox)
   end
 end

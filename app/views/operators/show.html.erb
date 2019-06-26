@@ -6,7 +6,7 @@
   <div class='row-fluid'>
     <div class="tabbable">
       <ul class="nav nav-tabs">
-        <li class="<%= 'active' unless movements_page %>">
+        <li class="<%= 'active' unless movements_page || transactions_page %>">
           <%= link_to t('view.operators.shifts'), '#shifts',
             data: { toggle: 'tab' } %>
         </li>
@@ -25,7 +25,7 @@
       </ul>
 
       <div class="tab-content">
-        <div class="tab-pane <%= 'active' unless movements_page %>" id="shifts">
+        <div class="tab-pane <%= 'active' unless movements_page || transactions_page %>" id="shifts">
           <table class="table table-striped">
             <thead>
               <tr>

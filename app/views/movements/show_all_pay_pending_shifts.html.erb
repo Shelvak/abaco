@@ -36,6 +36,7 @@
     <h2>
       <%= t('view.movements.shifts.shifts_for', operator: t('label.all')) %>
     </h2>
+    <h4><%= Box.human_attribute_name('default_cashbox') %> => <%= Box.default_cashbox.first.name %></h4>
     <table class="table table-striped">
       <thead>
         <tr>
