@@ -11,7 +11,7 @@ class BoxesController < ApplicationController
   # GET /boxes/1
   def show
     @title = t('view.boxes.show_title')
-    @transactions = @box.transactions.preload(:movement).order(id: :desc).page(params[:q])
+    @transactions = @box.transactions.preload(:movement).order(id: :desc).page(params[:page])
   end
 
   # GET /boxes/new

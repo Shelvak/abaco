@@ -1,6 +1,6 @@
 module VersionsHelper
   def modificated_warning_if_needed(obj)
-    return if obj.versions.where(event: 'update').empty?
+    return if obj.created_at == obj.updated_at
 
     content_tag(
       :span,
